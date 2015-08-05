@@ -1,0 +1,3 @@
+<columns>
+  <column forEach="${arg.columns}" label="${each}" style="font-size: 22px;text-align: center;"/>
+</columns>

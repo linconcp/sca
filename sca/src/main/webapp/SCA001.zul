@@ -1,0 +1,12 @@
+<?page title="Centro de Aula" contentType="text/html;charset=UTF-8"?>
+<?meta content="text/html; charset=UTF-8" pageEncoding="UTF-8"?>
+<window id="csca001" apply="br.ufg.prograd.sca.controle.CSCA001">
+  <grid id="grid" style="border: none;" emptyMessage="nenhum registro encontrado!">
+    <columns />
+  </grid>
+  <timer id="timer" delay="10000" repeats="true">
+    <attribute name="onTimer">
+  csca001$composer.atualizar();
+</attribute>
+  </timer>
+</window>

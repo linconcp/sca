@@ -1,0 +1,16 @@
+<?page title="Centro de Aula" contentType="text/html;charset=UTF-8"?>
+<?meta content="text/html; charset=UTF-8" pageEncoding="UTF-8"?>
+<window id="csca003" border="none" apply="br.ufg.prograd.sca.controle.CSCA003">
+  <grid id="grid" model="@{csca003$composer.listaDatas}" style="border: none;" height="100%"
+    emptyMessage="nenhum registro encontrado!">
+    <columns>
+      <column label="Avisos" style="font-size: 22px" />
+    </columns>
+    <rows>
+      <row self="@{each=registro}" value="registro">
+        <label value="@{registro.mensagem}"
+          style="font-size: 18px; color: red; font-weight: bold; text-align: justify;" />
+      </row>
+    </rows>
+  </grid>
+</window>

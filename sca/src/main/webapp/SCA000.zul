@@ -1,0 +1,23 @@
+<?page title="Centro de Aulas" contentType="text/html;charset=UTF-8"?>
+<zk>
+  <style src="css/indexZUL.css" />
+  <window id="csca000" apply="br.ufg.prograd.sca.controle.CSCA000" height="100%">
+    <borderlayout>
+      <north height="80px" style="padding: 10px;">
+        <hbox pack="center" align="center" width="100%" height="100%">
+          <image src="imagem/ufg_logo.png" height="73px" width="150px" />
+          <label id="centroAula" value="@{csca000$composer.nome}" sclass="cabecalho" />
+        </hbox>
+      </north>
+      <center>
+        <iframe src="SCA001.zul" width="100%" height="100%"></iframe>
+      </center>
+      <south style="padding: 10px; text-align: center;">
+        <hbox width="100%">
+          <iframe src="SCA002.zul" width="100%" height="100%" hflex="3" vflex="1"></iframe>
+          <iframe src="SCA003.zul" hflex="3" vflex="1"></iframe>
+        </hbox>
+      </south>
+    </borderlayout>
+  </window>
+</zk>

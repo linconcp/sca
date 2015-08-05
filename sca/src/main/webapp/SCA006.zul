@@ -1,0 +1,49 @@
+<?page title="Cadastro de Datas Importantes" contentType="text/html;charset=UTF-8"?>
+<zk>
+  <window id="csca006" title="Cadastro de Prédios" border="normal" apply="br.ufg.prograd.sca.controle.CSCA006">
+    <grid>
+      <columns>
+        <column align="right" width="30%" />
+        <column />
+      </columns>
+      <rows>
+        <row>
+          <cell>
+            <label value="Identificador"></label>
+          </cell>
+          <cell>
+            <intbox id="data" value="@{csca006$composer.eCentroAula.id}" mold="rounded"
+              constraint="no negative, no empty" />
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <label value="Nome"></label>
+          </cell>
+          <cell>
+            <textbox id="aviso" width="500px" rows="1" value="@{csca006$composer.eCentroAula.nome}"
+              constraint="no empty" />
+          </cell>
+        </row>
+        <row spans="2" align="right">
+          <hbox width="100%" align="center" style="text-align=center;" pack="center">
+            <button id="btIncluir" label="Incluir" onClick="csca006$composer.incluir()" />
+            <button id="btAlterar" label="Alterar" onClick="csca006$composer.alterar()" disabled="true" />
+            <button id="btExcluir" label="Excluir" onClick="csca006$composer.excluir()" disabled="true" />
+          </hbox>
+        </row>
+      </rows>
+    </grid>
+    <listbox id="lstCentroAula" model="@{csca006$composer.listaCentroAula}"
+      emptyMessage="nenhum registro encontrado!">
+      <listhead>
+        <listheader label="Identificador" width="20%" align="center"></listheader>
+        <listheader label="Nome" width="70%" align="center"></listheader>
+      </listhead>
+      <listitem self="@{each=centro}" value="@{centro}">
+        <listcell style="text-align:center;" label="@{centro.id}" />
+        <listcell style="text-align:center;" label="@{centro.nome}" />
+      </listitem>
+    </listbox>
+  </window>
+</zk>

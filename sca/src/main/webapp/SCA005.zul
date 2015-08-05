@@ -1,0 +1,51 @@
+<?page title="Cadastro de Datas Importantes" contentType="text/html;charset=UTF-8"?>
+<zk>
+  <window id="csca005" title="Cadastro de Datas Importantes" border="normal"
+    apply="br.ufg.prograd.sca.controle.CSCA005">
+    <grid>
+      <columns>
+        <column align="right" width="30%" />
+        <column />
+      </columns>
+      <rows>
+        <row>
+          <cell>
+            <label value="Data"></label>
+          </cell>
+          <cell>
+            <datebox id="data" value="@{csca005$composer.eDataImportante.data}" mold="rounded"
+              constraint="no past, no empty" />
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <label value="Texto explicativo"></label>
+          </cell>
+          <cell>
+            <textbox id="mensagem" width="500px" rows="3" value="@{csca005$composer.eDataImportante.mensagem}"
+              constraint="no empty" />
+          </cell>
+        </row>
+        <row spans="2" align="right">
+          <hbox width="100%" align="center" style="text-align=center;" pack="center">
+            <button id="btIncluir" label="Incluir" onClick="csca005$composer.incluir()" />
+            <button id="btAlterar" label="Alterar" onClick="csca005$composer.alterar()" disabled="true" />
+            <button id="btExcluir" label="Excluir" onClick="csca005$composer.excluir()" disabled="true" />
+          </hbox>
+        </row>
+      </rows>
+    </grid>
+    <listbox id="lstDataImportante" model="@{csca005$composer.listaDataImportante}"
+      emptyMessage="nenhum registro encontrado!">
+      <listhead>
+        <listheader label="Data" width="20%" align="center"></listheader>
+        <listheader label="Mensagem" width="70%" align="center"></listheader>
+      </listhead>
+      <listitem self="@{each=aviso}" value="@{aviso}">
+        <listcell style="text-align:center;"
+          label="@{aviso.data, converter='org.zkoss.zkplus.databind.DateFormatConverter'}" self="@{format(dd/MM/yyyy)}" />
+        <listcell style="text-align:center;" label="@{aviso.mensagem}" />
+      </listitem>
+    </listbox>
+  </window>
+</zk>

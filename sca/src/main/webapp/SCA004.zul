@@ -1,0 +1,63 @@
+<?page title="Cadastro de Aviso" contentType="text/html;charset=UTF-8"?>
+<zk>
+  <window id="csca004" title="Cadastro de Aviso" border="normal" apply="br.ufg.prograd.sca.controle.CSCA004">
+    <grid>
+      <columns>
+        <column align="right" width="30%" />
+        <column />
+      </columns>
+      <rows>
+        <row>
+          <cell>
+            <label value="Data Inicial"></label>
+          </cell>
+          <cell>
+            <datebox id="dataInicial" value="@{csca004$composer.eAviso.dataInicial}" mold="rounded"
+              constraint="no past,no empty" />
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <label value="Data Final"></label>
+          </cell>
+          <cell>
+            <datebox id="dataFinal" value="@{csca004$composer.eAviso.dataFinal}" mold="rounded"
+              constraint="no past,no empty" />
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <label value="Aviso"></label>
+          </cell>
+          <cell>
+            <textbox id="mensagem" width="500px" rows="3" value="@{csca004$composer.eAviso.mensagem}"
+              constraint="no empty" />
+          </cell>
+        </row>
+        <row spans="2" align="right">
+          <hbox width="100%" align="center" style="text-align=center;" pack="center">
+            <button id="btIncluir" label="Incluir" onClick="csca004$composer.incluir()" />
+            <button id="btAlterar" label="Alterar" onClick="csca004$composer.alterar()" disabled="true" />
+            <button id="btExcluir" label="Excluir" onClick="csca004$composer.excluir()" disabled="true" />
+          </hbox>
+        </row>
+      </rows>
+    </grid>
+    <listbox id="lstAviso" model="@{csca004$composer.listaAviso}" emptyMessage="nenhum registro encontrado!">
+      <listhead>
+        <listheader label="Data Inicial" width="15%" align="center"></listheader>
+        <listheader label="Data Final" width="15%" align="center"></listheader>
+        <listheader label="Mensagem" width="70%" align="center"></listheader>
+      </listhead>
+      <listitem self="@{each=aviso}" value="@{aviso}">
+        <listcell style="text-align:center;"
+          label="@{aviso.dataInicial, converter='org.zkoss.zkplus.databind.DateFormatConverter'}"
+          self="@{format(dd/MM/yyyy)}" />
+        <listcell style="text-align:center;"
+          label="@{aviso.dataFinal, converter='org.zkoss.zkplus.databind.DateFormatConverter'}"
+          self="@{format(dd/MM/yyyy)}" />
+        <listcell style="text-align:center;" label="@{aviso.mensagem}" />
+      </listitem>
+    </listbox>
+  </window>
+</zk>

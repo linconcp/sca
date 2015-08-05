@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Context>
+<Context path="/sca" reloadable="true" >
+  <Resource name="jdbc/sca" auth="Container" type="javax.sql.DataSource" maxActive="2" maxIdle="2" maxWait="10000"
+    username="sa" password="" driverClassName="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:mem:sca" />
+</Context>
