@@ -3,7 +3,11 @@ package br.ufg.prograd.sca.controle;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.Authenticator;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.PasswordAuthentication;
+import java.net.Proxy;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -59,6 +63,22 @@ public class CSCA001 extends GenericForwardComposer<Component> {
   @Override
   public void doAfterCompose(final Component comp) throws Exception {
     super.doAfterCompose(comp);
+
+    // TODO retirar as linhas de autenticação para o proxy quando colocar em produção
+    final String authUser = "m131741";
+    final String authPassword = "OmPc5,SAN";
+
+    Authenticator.setDefault(new Authenticator() {
+
+      @Override
+      public PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthentication(authUser, authPassword.toCharArray());
+      }
+    });
+
+    System.setProperty("http.proxyUser", authUser);
+    System.setProperty("http.proxyPassword", authPassword);
+    // TODO até aqui
     this.atualizar();
   }
 
@@ -74,12 +94,15 @@ public class CSCA001 extends GenericForwardComposer<Component> {
         this.resultadoConsulta = new ArrayList<EHorario>();
 
         while ((linhaBruta = br.readLine()) != null) {
+          System.out.println(linhaBruta);
+          System.out.println(new String(linhaBruta.getBytes("ISO-8859-1"), "UTF-8"));
+
           switch (contadorLinha) {
             case 0:
               break;
             case 1:
               linhaTratada = linhaBruta.split(CSCA001.SEPARADOR_DADOS);
-              linhaTratada[0] = "HorÃ¡rio/Salas";
+              linhaTratada[0] = "Horário/Salas";
               this.rotuloColunas = Arrays.asList(linhaTratada);
               break;
             default:
@@ -111,7 +134,7 @@ public class CSCA001 extends GenericForwardComposer<Component> {
         }
         br.close();
       } catch (final IOException e) {
-        throw new Exception("Problemas de conexÃ£o com o SiDS!");
+        throw new Exception("Problemas de conexão com o SiDS!");
       }
     }
   }
@@ -131,7 +154,7 @@ public class CSCA001 extends GenericForwardComposer<Component> {
 
     colunasCabecalho[0] = this.rotuloColunas.get(0);
 
-    /** pegando os rÃ³tulos das colunas das salas a serem apresentadas no momento */
+    /** pegando os rótulos das colunas das salas a serem apresentadas no momento */
     for (int contador = inicio; contador < fim; contador++) {
       colunasCabecalho[(contador - inicio) + 1] = this.rotuloColunas.get(contador);
     }
@@ -139,7 +162,7 @@ public class CSCA001 extends GenericForwardComposer<Component> {
     /** pegando os dados das salas a serem apresentadas no momento */
     for (int contador1 = 0; contador1 < this.resultadoConsulta.size(); contador1++) {
 
-      /** selecionando somente os horÃ¡rios depois da hora atual */
+      /** selecionando somente os horários depois da hora atual */
       if (hoje.after(this.resultadoConsulta.get(contador1).getDataFim())) {
         continue;
       }
@@ -222,7 +245,9 @@ public class CSCA001 extends GenericForwardComposer<Component> {
 
         // System.out.println(url);
 
-        final HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        final Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.1.58", 8080));
+
+        final HttpURLConnection con = (HttpURLConnection) url.openConnection(proxy);
 
         // dump all the content
         this.tratarConteudo(con);
