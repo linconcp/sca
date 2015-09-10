@@ -94,8 +94,7 @@ public class CSCA001 extends GenericForwardComposer<Component> {
         this.resultadoConsulta = new ArrayList<EHorario>();
 
         while ((linhaBruta = br.readLine()) != null) {
-          System.out.println(linhaBruta);
-          System.out.println(new String(linhaBruta.getBytes("ISO-8859-1"), "UTF-8"));
+          linhaBruta = new String(linhaBruta.getBytes("ISO-8859-1"), "UTF-8");
 
           switch (contadorLinha) {
             case 0:
@@ -169,11 +168,11 @@ public class CSCA001 extends GenericForwardComposer<Component> {
 
       final String[] conteudoAux = new String[colunasCabecalho.length];
 
-      /** o hor√°rio */
+      /** o hor·rio */
       conteudoAux[0] = formatadorData.format(this.resultadoConsulta.get(contador1).getDataInicio()) + " - "
           + formatadorData.format(this.resultadoConsulta.get(contador1).getDataFim());
 
-      /** as disciplinas nas salas nos hor√°rios */
+      /** as disciplinas nas salas nos hor·rios */
       for (int contador2 = inicio; contador2 < fim; contador2++) {
         conteudoAux[(contador2 - inicio) + 1] = this.resultadoConsulta.get(contador1).getDisciplinaSala()[contador2 - 1];
       }
