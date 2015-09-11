@@ -5,7 +5,6 @@
     <class>br.ufg.prograd.sca.entidade.EAviso</class>
     <class>br.ufg.prograd.sca.entidade.EDataImportante</class>
     <class>br.ufg.prograd.sca.entidade.ECentroAula</class>
-    <!-- <class>br.ufg.prograd.sca.entidade.EHorario</class> <class>br.ufg.prograd.sca.entidade.ESala</class> -->
     <properties>
       <property name="eclipselink.jdbc.batch-writing" value="JDBC" />
       <property name="javax.persistence.schema-generation.create-source" value="metadata" />
