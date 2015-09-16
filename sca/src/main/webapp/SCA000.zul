@@ -1,6 +1,6 @@
 <?page title="Centro de Aulas" contentType="text/html;charset=UTF-8"?>
 <zk>
-  <style src="css/indexZUL.css" />
+  <style>.z-grid-odd { background-color:#0000FF; }</style>
   <window id="csca000" apply="br.ufg.prograd.sca.controle.CSCA000" height="100%">
     <borderlayout>
       <north height="80px" style="padding: 10px;">
