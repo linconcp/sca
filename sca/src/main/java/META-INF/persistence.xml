@@ -5,18 +5,19 @@
     <class>br.ufg.prograd.sca.entidade.EAviso</class>
     <class>br.ufg.prograd.sca.entidade.EDataImportante</class>
     <class>br.ufg.prograd.sca.entidade.ECentroAula</class>
+    <class>br.ufg.prograd.sca.entidade.EHorario</class>
     <properties>
       <property name="eclipselink.jdbc.batch-writing" value="JDBC" />
-      <property name="javax.persistence.schema-generation.create-source" value="metadata" />
-      <property name="javax.persistence.schema-generation.drop-source" value="metadata" />
-      <property name="javax.persistence.schema-generation.database.action" value="none" />
-      <property name="javax.persistence.schema-generation.scripts.action" value="none" />
+      <property name="javax.persistence.schema-generation.create-source" value="script" />
+      <property name="javax.persistence.schema-generation.drop-source" value="script" />
+      <property name="javax.persistence.schema-generation.database.action" value="create" />
+      <property name="javax.persistence.schema-generation.scripts.action" value="create" />
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sca_dados" />
       <property name="javax.persistence.jdbc.user" value="root" />
       <property name="javax.persistence.jdbc.password" value="quiegh3A" />
-      <property name="eclipselink.ddl-generation" value="none" />
-      <property name="eclipselink.ddl-generation.output-mode" value="both" />
+      <property name="eclipselink.ddl-generation" value="create-tables" />
+      <property name="eclipselink.ddl-generation.output-mode" value="database" />
     </properties>
   </persistence-unit>
 </persistence>

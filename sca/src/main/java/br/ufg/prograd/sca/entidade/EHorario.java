@@ -3,14 +3,20 @@ package br.ufg.prograd.sca.entidade;
 import java.io.Serializable;
 import java.util.Date;
 
-// @Entity(name = "HORARIO")
-// @Table(name = "horario")
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "HORARIO")
+@Table(name = "horario")
 public class EHorario implements Serializable {
 
   private static final long serialVersionUID = -2591154974918066513L;
 
-  // @Id
-  // @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   private Date dataInicio;

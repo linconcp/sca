@@ -1,7 +1,11 @@
 <?page title="Centro de Aula" contentType="text/html;charset=UTF-8"?>
 <?meta content="text/html; charset=UTF-8" pageEncoding="UTF-8"?>
 <window id="csca002" border="none" apply="br.ufg.prograd.sca.controle.CSCA002" width="100%" height="100%">
-  <style src="css/indexZUL.css" />
+<style>
+    tr.z-grid-odd > td.z-row-inner, tr.z-grid-odd > .z-cell, tr.z-grid-odd { background: #bfeaff; } tr.z-grid-odd >
+    td.z-row-inner, tr.z-grid-odd > .z-cell { border-left: 1px solid transparent; background-color: #bfeaff; border-top:
+    1px solid #bfeaff; border-bottom: 1px solid #bfeaff; border-left: 1px solid #FFF; }
+  </style>
   <grid id="grid" model="@{csca002$composer.listaDatas}" style="border: none;"
     emptyMessage="nenhum registro encontrado!" width="100%" height="100%">
     <columns>

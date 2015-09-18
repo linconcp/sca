@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE zk>
 <zk>
-<library-property>
+  <library-property>
     <name>org.zkoss.theme.preferred</name>
     <value>sapphire</value> <!-- or silvertail, atlantic -->
-</library-property>
+  </library-property>
 </zk>
